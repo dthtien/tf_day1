@@ -41,3 +41,19 @@ output "NAME" {
     - `descripton`: document
     - `sensitive`
     - `depends_one`:  For example, perhaps you have an output variable that returns the IP address of a server, but that IP won’t be accessible until a security group (firewall) is properly configured for that server
+
+# Terraform - Day 2
+
+## Manage state
+- checkout [terraform backend config](./state_config/main.tf)
+### Isolation via workspaces
+- `tf workspace`: allow you to store your tf state in multiple separate, named workspaces
+- you can change how that module behaves based on the workspace you are in by using `terraform.workspace`
+```tf
+resource "aws_instance" "example" {
+    ami = ""
+    instance_type = (
+        terraform.workspace == "default" ? "t2.medium" : "t2.micro"
+    )
+}
+```

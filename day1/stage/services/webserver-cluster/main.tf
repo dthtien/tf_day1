@@ -143,12 +143,3 @@ resource "aws_lb_listener_rule" "asg" {
   }
 }
 
-variable "server_port" {
-  description = "The port the server will listen on"
-  type        = number
-  default     = 8080
-}
-
-output "public_dns" {
-  value = aws_lb.example.dns_name
-}
