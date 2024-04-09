@@ -59,7 +59,7 @@ resource "aws_instance" "example" {
 ```
 
 ### terraform_remote_state
-```tf
+```
 data "terraform_remote_state" "db" {
   backend = "s3"
 
@@ -70,3 +70,32 @@ data "terraform_remote_state" "db" {
   }
 }
 ```
+
+# Terraform - Day 3
+
+## TF module
+- [Recommend structure](./day1)
+- `locals`
+- `path`
+- **When creating a module, you should always prefer using separate resources**
+- module version
+    - For safety we can store the module in another repo and store in in the cloud, we can use version control to decide
+      the module version, lets say we want to made some change in the original module, we can release it as a new
+      version and then test it in the test environment before deploy the change in staging
+
+# Terraform - Day 4
+- `count`
+- `for_each`
+- `dynamic`
+    ```tf
+    dynamic "<VAR_NAME>" {
+        for_each = <COLLECTION>
+
+        content {
+            [CONFIG...]
+        }
+    }
+    ```
+
+
+- Conditionals
